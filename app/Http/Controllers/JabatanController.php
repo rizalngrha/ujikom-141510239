@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Request;
 use App\Jabatan;
+use Validator;
+use Input;
 class JabatanController extends Controller
 {
     /**
@@ -11,10 +13,10 @@ class JabatanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-     public function __construct()
-    {
-        $this->middleware('Admin');
-    }
+    //  public function __construct()
+    // {
+    //     $this->middleware('Admin');
+    // }
     public function index()
     {
         //kategori
@@ -42,9 +44,27 @@ class JabatanController extends Controller
     public function store(Request $request)
     {
         //
-        $Jabatan=Request::all();
-        Jabatan::create($Jabatan);
-        return redirect('Jabatan');
+       $rules = ['Kode_Jabatan'=>'required|unique:Jabatan',
+                 'Nama_Jabatan'=>'required'];
+        $message = ['Kode_Jabatan.required' => 'Isi dulu', 
+                    'Kode_Jabatan.unique' => 'Harap Gunakan Kode lain, Karena Kode sudah Digunakan',
+                    'Nama_Jabatan.required' => 'Isi dulu'];
+        $validator = Validator::make(Input::all(),$rules,$message);
+        
+        if ($validator->fails())
+        {
+
+            return redirect('/Jabatan/create')
+            ->withErrors($validator)
+            ->withInput();
+
+        }
+        else
+        {
+            $Jabatan = Request::all();
+            Jabatan::create($Jabatan);
+            return redirect('Jabatan');
+        }
     }
 
     /**

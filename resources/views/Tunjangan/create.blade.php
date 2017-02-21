@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.ujikom')
 @section('content')
             <div class="panel panel-default">
                 <div class="panel-heading"><center><font color="black" size="6%">Create Tunjangan</font></div>

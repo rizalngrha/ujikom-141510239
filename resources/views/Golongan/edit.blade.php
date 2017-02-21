@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.ujikom')
 @section('content')
-            <div class="panel panel-default">
-                <div class="panel-heading"><center><font color="black" size="6%">Create Golongan</font></div>
+            <div class="panel panel-primary">
+                <div class="panel-heading"><center><h3><font color="white" face="Maindra GD">Edit Data Golongan</h3></font></div>
 </center>
                 <div class="panel-body">
    {!! Form::model($Golongan,['method' => 'PATCH','route'=>['Golongan.update',$Golongan->id]]) !!}

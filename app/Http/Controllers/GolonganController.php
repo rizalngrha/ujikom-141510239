@@ -43,9 +43,27 @@ class GolonganController extends Controller
     public function store(Request $request)
     {
         //
-         $Golongan=Request::all();
-        Golongan::create($Golongan);
-        return redirect('Golongan');
+         $rules = ['Kode_Golongan'=>'required|unique:Golongan',
+                 'Nama_Golongan'=>'required'];
+        $message = ['Kode_Golongan.required' => 'Isi dulu', 
+                    'Kode_Golongan.unique' => 'Harap Gunakan Kode lain, Karena Kode sudah Digunakan',
+                    'Nama_Golongan.required' => 'Isi dulu'];
+        $validator = Validator::make(Input::all(),$rules,$message);
+        
+        if ($validator->fails())
+        {
+
+            return redirect('/Golongan/create')
+            ->withErrors($validator)
+            ->withInput();
+
+        }
+        else
+        {
+            $Golongan = Request::all();
+            Golongan::create($Golongan);
+            return redirect('Golongan');
+        }
     }
 
     /**

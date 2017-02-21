@@ -29,6 +29,6 @@ Route::resource('/Kategori_Lembur', 'Kategori_LemburController');
 Route::resource('/Pegawai', 'PegawaiController');
 Route::resource('/Lembur_Pegawai', 'Lembur_PegawaiController');
 Route::resource('/Tunjangan', 'TunjanganController');
-
+Route::resource('/Penggajian', 'PenggajianController');
 Route::resource('/Tunjangan_Pegawai', 'Tunjangan_PegawaiController');
 

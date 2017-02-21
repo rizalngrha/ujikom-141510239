@@ -1,10 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.ujikom')
 
 @section('content')
 
             <div class="panel panel-primary">
                 <div class="panel-heading">     
-                <h3><font face="Maiandra GD" color="white"><CENTER>Table Pegawai</CENTER></font></h3></CENTER>
+                <h3><font face="Maiandra GD" color="white"><CENTER>Table Data Pegawai</CENTER></font></h3></CENTER>
                 </div>
                 <div class="panel-body">
                     <table class="table table-striped">
@@ -12,11 +12,11 @@
                 <tr>
                    <th><center>No</center></th>
 					<th><center>NIP</center></th>
-					<th><center>NAMA PEGAWAI</center></th>
-					<th><center>JABATAN</center></th>
-					<th><center>GOLONGAN</center></th>
-					<th><center>PHOTO</center></th>
-					<th colspan="3"><center>PILIHAN </center></th>
+					<th><center>Nama Pegawai</center></th>
+					<th><center>Jabatan</center></th>
+					<th><center>Golongan</center></th>
+					<th><center>Photo</center></th>
+					<th colspan="3"><center>Pilihan </center></th>
 
                 </tr>
             </thead>

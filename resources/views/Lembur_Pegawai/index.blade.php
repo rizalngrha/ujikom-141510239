@@ -1,4 +1,4 @@
- @extends('layouts.app')
+ @extends('layouts.ujikom')
 
 @section('content')
 
@@ -12,8 +12,12 @@
                 <tr>
                     <th><center>No</center></th>
                     <th><center>Kode Lembur</center></th>
+                    <th><center>Jabatan</center></th>
+                    <th><center>Golongan</center></th>
                     <th><center>Nama Pegawai</center></th>
                     <th><center>Jumlah Jam</center></th>
+                    <th><center>Besaran Uang</center></th>
+                    
                     <th colspan="2"><center>Selection</center></th>
 
                 </tr>
@@ -26,8 +30,13 @@
                 <tr>
                     <td><center>{{ $no++ }}</center></td>
                     <td><center>{{ $data->Kategori_Lembur->Kode_Lembur}}</center></td>
+                    <td><center>{{ $data->Kategori_Lembur->Jabatan->Nama_Jabatan}}</center></td>
+                    <td><center>{{ $data->Kategori_Lembur->Golongan->Nama_Golongan}}</center></td>
+                    
                     <td><center>{{ $data->Pegawai->User->name}}</center></td>
                     <td><center>{{ $data->Jumlah_Jam}}</center></td>
+                    <td><center><?php echo 'Rp'. number_format($data->Kategori_Lembur->Besaran_Uang, 2,",","."); ?></center>
+             </td>
                     <td><center><a href="{{route('Lembur_Pegawai.edit',$data->id)}}" class="btn btn-warning">Update</a></center></td>
              <td><center>
                {!! Form::open(['method' => 'DELETE', 'route'=>['Lembur_Pegawai.destroy', $data->id]]) !!}

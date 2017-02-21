@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Tunjangan;
+use App\Penggajian;
+use Request;
 
 class PenggajianController extends Controller
 {
@@ -14,6 +16,9 @@ class PenggajianController extends Controller
     public function index()
     {
         //
+        $Penggajian = Penggajian::all();
+        $Tunjangan = Tunjangan::all();
+        return view('Penggajian.index', compact('Penggajian', 'Tunjangan'));
     }
 
     /**
@@ -24,6 +29,10 @@ class PenggajianController extends Controller
     public function create()
     {
         //
+        $Tunjangan = Tunjangan::all();
+        $Penggajian = Penggajian::all();
+        return view('Penggajian.create', compact('Tunjangan', 'Penggajian'));
+
     }
 
     /**
@@ -35,6 +44,9 @@ class PenggajianController extends Controller
     public function store(Request $request)
     {
         //
+         $Penggajian=Request::all();
+        Penggajian::create($Penggajian);
+        return redirect('Penggajian');
     }
 
     /**

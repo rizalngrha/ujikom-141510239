@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.ujikom')
 @section('content')
-            <div class="panel panel-default">
-                <div class="panel-heading"><center><font color="black" size="6%">Create Jabatan</font></div>
+            <div class="panel panel-primary">
+                <div class="panel-heading"><center><h3><font color="white" face="Maiandra GD">Edit Data Kategori Lembur</font></h3></div>
 </center>
                 <div class="panel-body">
   {!! Form::model($Kategori_Lembur,['method' => 'PATCH','route'=>['Kategori_Lembur.update',$Kategori_Lembur->id]]) !!}

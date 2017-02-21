@@ -17,9 +17,8 @@ class Lembur_PegawaiController extends Controller
     
     public function index()
     {
-        //
-        
-        $Kategori_Lembur = Kategori_Lembur::all();
+        // //
+         $Kategori_Lembur = Kategori_Lembur::all();
         $Lembur_Pegawai = Lembur_Pegawai::all();
         return view('Lembur_Pegawai.index',compact('Lembur_Pegawai','Kategori_Lembur'));
     }

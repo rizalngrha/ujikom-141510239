@@ -1,14 +1,22 @@
-@extends('layouts.app')
+@extends('layouts.ujikom')
 @section('content')
-            <div class="panel panel-default">
-                <div class="panel-heading"><center><font color="black" size="6%">Create Jabatan</font></div>
+            <div class="panel panel-primary">
+                <div class="panel-heading"><center><h3><font color="white" face="Maindra GD" >Tambah Data Golongan</h3></font></div>
 </center>
                 <div class="panel-body">
     {!! Form::open(['url' => 'Golongan']) !!}
-    <div class="form-group">
+     <div class="form-group">
+     <div class="form-group {{ $errors->has('Kode_Golongan') ? ' has-error' : 'message' }}">
         {!! Form::label('Kode Golongan', 'Kode Golongan') !!}
         {!! Form::text('Kode_Golongan',null,['class'=>'form-control','required']) !!}
+           @if ($errors->has('Nama_Golongan'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('Kode_Golongan') }}</strong>
+                                    </span>
+                                @endif
+        </div>            
     </div>
+
     <div class="form-group">
         {!! Form::label('Nama Golongan', 'Nama Golongan') !!}
         {!! Form::text('Nama_Golongan',null,['class'=>'form-control','required']) !!}

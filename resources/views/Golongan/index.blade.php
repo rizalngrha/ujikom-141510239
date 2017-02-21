@@ -1,19 +1,19 @@
- @extends('layouts.app')
+ @extends('layouts.ujikom')
 
 @section('content')
 
             <div class="panel panel-primary">
                 <div class="panel-heading">     
-                <h3><font face="Maiandra GD" color="white"><CENTER>Table Golongan</CENTER></font></h3></CENTER>
+                <h3><font face="Maiandra GD" color="white"><CENTER>Table Data Golongan</CENTER></font></h3></CENTER>
                 </div>
                 <div class="panel-body">
                     <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>No</th>
-                    <th>Kode Golongan</th>
-                    <th>Nama Golongan</th>
-                    <th>Besaran Uang</th>
+                    <th><center>No</center></th>
+                    <th><center>Kode Golongan</center></th>
+                    <th><center>Nama Golongan</center></th>
+                    <th><center>Besaran Uang</center></th>
                     <th colspan="2"><center>Selection</center></th>
 
                 </tr>
@@ -25,9 +25,9 @@
                 @foreach ($Golongan as $data)
                 <tr>
                     <td><center>{{ $no++ }}</center></td>
-                    <td>{{ $data->Kode_Golongan }}</td>
-                    <td>{{ $data->Nama_Golongan }}</td>
-                     <td><?php echo 'Rp'. number_format($data->Besaran_Uang, 2,",","."); ?>
+                    <td><center>{{ $data->Kode_Golongan }}</center></td>
+                    <td><center>{{ $data->Nama_Golongan }}</center></td>
+                     <td><center><?php echo 'Rp'. number_format($data->Besaran_Uang, 2,",","."); ?></center>
              </td>
                     
              

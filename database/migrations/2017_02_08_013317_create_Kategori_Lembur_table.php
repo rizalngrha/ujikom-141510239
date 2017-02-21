@@ -15,7 +15,7 @@ class CreateKategoriLemburTable extends Migration
     {
         Schema::create('Kategori_Lembur', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('Kode_Lembur');
+            $table->string('Kode_Lembur', 100)->unique();
             $table->unsignedInteger('Kode_Jabatan');
             $table->foreign('Kode_Jabatan')->references('id')->on('Jabatan')
                   ->onDelete('cascade')->onUpdate('cascade');

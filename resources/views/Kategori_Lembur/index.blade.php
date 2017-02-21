@@ -1,20 +1,20 @@
- @extends('layouts.app')
+ @extends('layouts.ujikom')
 
 @section('content')
 
             <div class="panel panel-primary">
                 <div class="panel-heading">     
-                <h3><font face="Maiandra GD" color="white"><CENTER>Table Kategori Lembur</CENTER></font></h3></CENTER>
+                <h3><font face="Maiandra GD" color="white"><CENTER>Table Data Kategori Lembur</CENTER></font></h3></CENTER>
                 </div>
                 <div class="panel-body">
                     <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>No</th>
-                    <th>Kode Lembur</th>
-                    <th>Jabatan</th>
-                    <th>Golongan</th>
-                    <th>Besaran Uang</th>
+                    <th><center>No</center></th>
+                    <th><center>Kode Lembur</center></th>
+                    <th><center>Jabatan</center></th>
+                    <th><center>Golongan</center></th>
+                    <th><center>Besaran Uang</center></th>
                     <th colspan="2"><center>Selection</center></th>
 
                 </tr>
@@ -26,10 +26,10 @@
                 @foreach ($Kategori_Lembur as $data)
                 <tr>
                     <td><center>{{ $no++ }}</center></td>
-                    <td>{{ $data->Kode_Lembur}}</td>
-                    <td>{{ $data->Jabatan->Nama_Jabatan }}</td>
-                    <td>{{ $data->Golongan->Nama_Golongan }}</td>
-                     <td><?php echo 'Rp'. number_format($data->Besaran_Uang, 2,",","."); ?>
+                    <td><center>{{ $data->Kode_Lembur}}</center></td>
+                    <td><center>{{ $data->Jabatan->Nama_Jabatan }}</center></td>
+                    <td><center>{{ $data->Golongan->Nama_Golongan }}</center></td>
+                     <td><center><?php echo 'Rp'. number_format($data->Besaran_Uang, 2,",","."); ?></center>
              </td>
                     
              

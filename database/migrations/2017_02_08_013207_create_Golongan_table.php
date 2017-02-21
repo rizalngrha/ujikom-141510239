@@ -15,7 +15,7 @@ class CreateGolonganTable extends Migration
     {
         Schema::create('Golongan', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('Kode_Golongan');
+            $table->string('Kode_Golongan', 100)->unique();
             $table->string('Nama_Golongan');
             $table->integer('Besaran_Uang');
             $table->timestamps();
