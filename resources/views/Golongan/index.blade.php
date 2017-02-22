@@ -1,4 +1,4 @@
- @extends('layouts.ujikom')
+ @extends('layouts.master')
 
 @section('content')
 
@@ -31,19 +31,25 @@
              </td>
                     
              
-                    <td><a href="{{route('Golongan.edit',$data->id)}}" class="btn btn-warning">Update</a></td>
-             <td>
-             {!! Form::open(['method' => 'DELETE', 'route'=>['Golongan.destroy', $data->id]]) !!}
-             {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-             {!! Form::close() !!}
-             </td>
+           
+                                <td><center>
+                            <a href="{{ route('Golongan.edit', $data->id) }}"  button class="btn btn-primary" type="submit"><i class="fa fa-pencil-square-o"></i></a></center>
+                             <?php $id=$data->id;?>
+                             {!! Form::open(['method' => 'DELETE', 'route'=>['Golongan.destroy', $id]]) !!}
+                                    
+                                 </td>
+                                 <td>
+                                 <center>
+                                    <button class="btn btn-danger" type="submit"><i class="fa fa-trash"></i></button></center>
+                                    {!! Form::close() !!}
+                                </td>
                     </tr>
                 @endforeach
           
 
             </tbody>
         </table>
-        <a href="{{url('/Golongan/create')}}" class="btn btn-success"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Golongan</a>
+        <a href="{{url('/Golongan/create')}}" class="btn btn-success"><span class="fa fa-plus" aria-hidden="true"></span> Data</a>
                 </div>
             </div>
         </div>

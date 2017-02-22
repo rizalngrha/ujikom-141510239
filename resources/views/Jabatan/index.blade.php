@@ -1,4 +1,4 @@
- @extends('layouts.ujikom')
+ @extends('layouts.master')
 
 @section('content')
 
@@ -15,7 +15,6 @@
                     <th><center>Nama Jabatan</center></th>
                     <th><center>Besaran Uang</center></th>
                     <th colspan="2"><center>Selection</center></th>
-
                 </tr>
             </thead>
             @php
@@ -29,21 +28,27 @@
                     <td><center>{{ $data->Nama_Jabatan }}</center></td>
                      <td><center><?php echo 'Rp'. number_format($data->Besaran_Uang, 2,",","."); ?></center>
              </td>
-                    
-             
-                    <td><a href="{{route('Jabatan.edit',$data->id)}}" class="btn btn-warning">Update</a></td>
-             <td>
-             {!! Form::open(['method' => 'DELETE', 'route'=>['Jabatan.destroy', $data->id]]) !!}
-             {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-             {!! Form::close() !!}
-             </td>
+               
+           
+                                <td><center>
+                            <a href="{{ route('Jabatan.edit', $data->id) }}"  button class="btn btn-primary" type="submit"><i class="fa fa-pencil-square-o"></i></a></center>
+                             <?php $id=$data->id;?>
+                             {!! Form::open(['method' => 'DELETE', 'route'=>['Jabatan.destroy', $id]]) !!}
+                                    
+                                 </td>
+                                 <td>
+                                 <center>
+                                    <button class="btn btn-danger" type="submit"><i class="fa fa-trash"></i></button></center>
+                                    {!! Form::close() !!}
+                                </td>
                     </tr>
                 @endforeach
+
           
 
             </tbody>
         </table>
-        <a href="{{url('/Jabatan/create')}}" class="btn btn-success"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Jabatan</a>
+        <a href="{{url('/Jabatan/create')}}" class="btn btn-success"><span class="fa fa-plus" aria-hidden="true"></span> Data</a>
                 </div>
             </div>
         </div>

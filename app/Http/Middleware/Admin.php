@@ -21,3 +21,4 @@ class Admin
         return redirect()->guest('/login');
     }
 }
+

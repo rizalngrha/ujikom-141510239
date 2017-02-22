@@ -1,4 +1,4 @@
-@extends('layouts.ujikom')
+@extends('layouts.master')
 
 @section('content')
 
@@ -12,7 +12,7 @@
                 <tr>
                    <th><center>No</center></th>
 					<th><center>Kode Tunjangan</center></th>
-					<th><center>Nama Pegawai</center></th>
+					<th><center>Nama&nbsp;Pegawai</center></th>
 					<th><center>Jabatan</center></th>
 					<th><center>Golongan</center></th>
 					<th><center>Besaran Uang</center></th>
@@ -36,12 +36,19 @@
 			
 						<td><center><?php echo 'Rp'. number_format($data->Tunjangan->Besaran_Uang, 2,",","."); ?>
              </center></td>
-						<td><center><a href="{{ route('Tunjangan_Pegawai.edit', $data->id) }}" class="btn btn-warning">Ubah</a></center></td>
-						<td><center>
-							{!! Form::open(['method' => 'DELETE', 'route' => ['Tunjangan_Pegawai.destroy', $data->id]]) !!}
-							{!! Form::submit('Hapus', ['class' => 'btn btn-danger']) !!}
-							{!! Form::close() !!}
-						</center></td>
+						
+           
+                                <td><center>
+                            <a href="{{ route('Tunjangan_Pegawai.edit', $data->id) }}"  button class="btn btn-primary" type="submit"><i class="fa fa-pencil-square-o"></i></a></center>
+                             <?php $id=$data->id;?>
+                             {!! Form::open(['method' => 'DELETE', 'route'=>['Tunjangan_Pegawai.destroy', $id]]) !!}
+                                    
+                                 </td>
+                                 <td>
+                                 <center>
+                                    <button class="btn btn-danger" type="submit"><i class="fa fa-trash"></i></button></center>
+                                    {!! Form::close() !!}
+                                </td>
 					</tr>
 				@endforeach
 

@@ -1,4 +1,4 @@
- @extends('layouts.ujikom')
+ @extends('layouts.master')
 
 @section('content')
 
@@ -12,8 +12,8 @@
                 <tr>
                     <th><center>No</center></th>
                     <th><center>Kode Tunjangan</center></th>
-                    <th><center>Jumlah Jam Lembur</center></th>
-                    <th><center>Jumlah Uang lembur</center></th>
+                    <th><center>Jam Lembur</center></th>
+                    <th><center>Uang lembur</center></th>
                     <th><center>Gaji Pokok</center></th>
                     <th><center>Total Gaji </center></th>
                     <th><center>Tanggal Pengambilan</center></th>

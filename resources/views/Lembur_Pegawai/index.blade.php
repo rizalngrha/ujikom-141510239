@@ -1,4 +1,4 @@
- @extends('layouts.ujikom')
+ @extends('layouts.master')
 
 @section('content')
 
@@ -37,19 +37,26 @@
                     <td><center>{{ $data->Jumlah_Jam}}</center></td>
                     <td><center><?php echo 'Rp'. number_format($data->Kategori_Lembur->Besaran_Uang, 2,",","."); ?></center>
              </td>
-                    <td><center><a href="{{route('Lembur_Pegawai.edit',$data->id)}}" class="btn btn-warning">Update</a></center></td>
-             <td><center>
-               {!! Form::open(['method' => 'DELETE', 'route'=>['Lembur_Pegawai.destroy', $data->id]]) !!}
-             {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-             {!! Form::close() !!}</center>
-     </td>
+                   
+           
+                                <td><center>
+                            <a href="{{ route('Lembur_Pegawai.edit', $data->id) }}"  button class="btn btn-primary" type="submit"><i class="fa fa-pencil-square-o"></i></a></center>
+                             <?php $id=$data->id;?>
+                             {!! Form::open(['method' => 'DELETE', 'route'=>['Lembur_Pegawai.destroy', $id]]) !!}
+                                    
+                                 </td>
+                                 <td>
+                                 <center>
+                                    <button class="btn btn-danger" type="submit"><i class="fa fa-trash"></i></button></center>
+                                    {!! Form::close() !!}
+                                </td>
                     </tr>
                 @endforeach
           
 
             </tbody>
         </table>
-        <a href="{{url('/Lembur_Pegawai/create')}}" class="btn btn-success"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Lembur Pegawai</a>
+        <a href="{{url('/Lembur_Pegawai/create')}}" class="btn btn-success"><span class="fa fa-plus" aria-hidden="true"></span> Data</a>
                 </div>
             </div>
         </div>

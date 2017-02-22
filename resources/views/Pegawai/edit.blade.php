@@ -1,4 +1,4 @@
-@extends('layouts.ujikom')
+@extends('layouts.master')
 
 @section('content')
 <div class="container">
@@ -45,7 +45,7 @@
 	                <div class="form-group{{ $errors->has('Photo') ? ' has-error' : '' }}">
                         <label for="Photo" class="col-md-4 control-label">Photo</label>
                             <div class="col-md-6">
-                                <input id="Photo" type="file" class="form-control" name="Photo" value="{{ old('Photo') }}" required autofocus>
+                                <input id="Photo" type="file" class="form-control" name="Photo" value="{{ old('Photo') }}">
                             </div>
                         </div>
 					<div class="form-group">

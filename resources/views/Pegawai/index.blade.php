@@ -1,4 +1,4 @@
-@extends('layouts.ujikom')
+@extends('layouts.master')
 
 @section('content')
 
@@ -16,7 +16,7 @@
 					<th><center>Jabatan</center></th>
 					<th><center>Golongan</center></th>
 					<th><center>Photo</center></th>
-					<th colspan="3"><center>Pilihan </center></th>
+					<th colspan="3"><center>Selection</center></th>
 
                 </tr>
             </thead>
@@ -37,13 +37,18 @@
 								<img src="{{asset('/image/'.$data->Photo)}}" height="100px" width="100px">
 							</center>
 						</td>
-						<!-- <td><center><a href="{{ url('Pegawai', $data->id) }}" class="btn btn-primary">Lihat</a></center></td>
-					 -->	<td><center><a href="{{ route('Pegawai.edit', $data->id) }}" class="btn btn-warning">Ubah</a></center></td>
-						<td><center>
-							{!! Form::open(['method' => 'DELETE', 'route' => ['Pegawai.destroy', $data->id]]) !!}
-							{!! Form::submit('Hapus', ['class' => 'btn btn-danger']) !!}
-							{!! Form::close() !!}
-						</center></td>
+						
+                                <td><center>
+                            <a href="{{ route('Pegawai.edit', $data->id) }}"  button class="btn btn-primary" type="submit"><i class="fa fa-pencil-square-o"></i></a></center>
+                             <?php $id=$data->id;?>
+                             {!! Form::open(['method' => 'DELETE', 'route'=>['Pegawai.destroy', $id]]) !!}
+                                    
+                                 </td>
+                                 <td>
+                                 <center>
+                                    <button class="btn btn-danger" type="submit"><i class="fa fa-trash"></i></button></center>
+                                    {!! Form::close() !!}
+                                </td>
 					</tr>
 				@endforeach
 

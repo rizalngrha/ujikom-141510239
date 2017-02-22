@@ -1,4 +1,4 @@
-@extends('layouts.ujikom')
+@extends('layouts.master')
 
 @section('content')
 <div class="container">
@@ -44,6 +44,9 @@
                                <select class="form-control" name="permission">
                                     <option value="Admin">Admin</option>
                                     <option value="Pegawai">Pegawai</option>
+                                    <option value="Pegawai">HRD</option>
+                                    <option value="Pegawai">Keuangan</option>
+                                    
                                 </select>
                             </div>
                         </div>
@@ -102,7 +105,8 @@
                         <div class="form-group{{ $errors->has('Photo') ? ' has-error' : '' }}">
                             <label for="Photo" class="col-md-4 control-label">Photo</label>
                             <div class="col-md-6">
-                                <input id="Photo" type="file" class="form-control" name="Photo" value="{{ old('Photo') }}" required autofocus>
+                            <img  id="showgambar" src="{{asset('image/default.png')}}" width="200" height="200" class="img img-thumbnail">
+                                <input id="Photo" type="file" class="form-control" name="Photo" value="{{ old('Photo') }}" autofocus>
                             </div>
                         </div>
 						<div class="form-group">

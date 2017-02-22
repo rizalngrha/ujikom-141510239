@@ -1,4 +1,4 @@
-@extends('layouts.ujikom')
+@extends('layouts.master')
 @section('content')
             <div class="panel panel-primary">
                 <div class="panel-heading">
@@ -7,8 +7,9 @@
                 <div class="panel-body">
     {!! Form::open(['url' => 'Jabatan']) !!}
     <div class="form-group">
+    {!! Form::label('Kode Jabatan', 'Kode Jabatan') !!}
      <div class="form-group {{ $errors->has('Kode_Jabatan') ? ' has-error' : 'message' }}">
-        {!! Form::label('Kode Jabatan', 'Kode Jabatan') !!}
+        
         {!! Form::text('Kode_Jabatan',null,['class'=>'form-control','required']) !!}
            @if ($errors->has('Nama_Jabatan'))
                                     <span class="help-block">

@@ -1,4 +1,4 @@
-@extends('layouts.ujikom')
+@extends('layouts.master')
 @section('content')
             <div class="panel panel-primary">
                 <div class="panel-heading"><center><h3><font color="white" face="Maindra GD">Edit Data Golongan</h3></font></div>
