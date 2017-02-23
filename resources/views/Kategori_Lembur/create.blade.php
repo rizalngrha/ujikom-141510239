@@ -1,22 +1,21 @@
 @extends('layouts.master')
 @section('content')
             <div class="panel panel-primary">
-                <div class="panel-heading"><center><font color="black" size="6%">Create Kategori Lembur</font></div>
+                <div class="panel-heading"><center><h3><font face="Maiandra GD" color="white">Tambah Data Kategori Lembur</font></div></h3>
 </center>
                 <div class="panel-body">
     {!! Form::open(['url' => 'Kategori_Lembur']) !!}
-    <div class="form-group">
-     {!! Form::label('Kode Lembur', 'Kode Lembur') !!}
-       
-     <div class="form-group {{ $errors->has('Kode_Lembur') ? ' has-error' : 'message' }}">
-         {!! Form::text('Kode_Lembur',null,['class'=>'form-control','required']) !!}
-           @if ($errors->has('Besaran_Uang'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('Kode_Lembur') }}</strong>
-                                    </span>
-                                @endif
-        </div>            
-    </div>
+    <div class="form-group{{ $errors->has('Kode_Lembur') ? ' has-error' : '' }}">
+                            {!! Form::label('Kode', 'Kode Lembur:') !!}
+                            <input type="text" name="Kode_Lembur" class="form-control" required>
+
+                            @if ($errors->has('Kode_Lembur'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('Kode_Lembur') }}</strong>
+                                </span>
+                            @endif 
+                        </div>
+
 
 
       <div class="form-group">

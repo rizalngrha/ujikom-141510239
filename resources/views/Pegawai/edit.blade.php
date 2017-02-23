@@ -5,7 +5,7 @@
 	<div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-primary">
-                <div class="panel-heading">Edit Data Pegawai</div>
+                <div class="panel-heading"><h3><center><font face="Maiandra GD" color="white">Edit Data Pegawai</font></h3></div></center>
                 <div class="panel-body">
 				<hr>
 				{!! Form::model($Pegawai, ['class' => 'form-horizontal',  'enctype' => 'multipart/form-data', 'method' => 'PATCH', 'route' => ['Pegawai.update', $Pegawai->id], 'files' => true]) !!}

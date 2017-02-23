@@ -4,7 +4,7 @@
 
             <div class="panel panel-primary">
                 <div class="panel-heading">     
-                <h3><font face="Maiandra GD" color="white"><CENTER>Table Lembur Pegawai</CENTER></font></h3></CENTER>
+                <h3><font face="Maiandra GD" color="white"><CENTER>Table Data Lembur Pegawai</CENTER></font></h3></CENTER>
                 </div>
                 <div class="panel-body">
                     <table class="table table-striped">

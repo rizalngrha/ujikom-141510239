@@ -4,7 +4,7 @@
 <div class="container">
 	<div class="row">
              <div class="panel panel-primary">
-                <div class="panel-heading">Tambah Data Pegawai</div>
+                <div class="panel-heading"><h3><font face="Maiandra GD" color="white">Tambah Data Pegawai</font></h3></div>
                 <div class="panel-body">
                 <hr>
                 <form class="form-horizontal" role="form" method="POST" action="{{url('/Pegawai')}}" enctype="multipart/form-data">

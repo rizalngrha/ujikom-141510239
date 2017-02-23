@@ -6,6 +6,7 @@ use Request;
 use App\Lembur_Pegawai;
 use App\Kategori_Lembur;
 use App\Pegawai;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Lembur_PegawaiController extends Controller
 {
@@ -16,7 +17,7 @@ class Lembur_PegawaiController extends Controller
      */
      public function __construct()
     {
-        $this->middleware('Keuangan');
+        $this->middleware('Admin');
     }
     public function index()
     {

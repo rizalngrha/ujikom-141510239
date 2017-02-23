@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
             <div class="panel panel-primary">
-                <div class="panel-heading"><center><font color="black" size="6%">Create Tunjangan</font></div>
+                <div class="panel-heading"><h3><font face="Maiandra GD" color="white"><CENTER>Tambah Data Tunjangan Pegawai</font></div></CENTER></font>
 </center>
                 <div class="panel-body">
     {!! Form::open(['url' => 'Tunjangan_Pegawai']) !!}

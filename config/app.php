@@ -164,6 +164,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        'Tymon\JWTAuth\Providers\JWTAuthServiceProvider',
         /*
          * Package Service Providers...
          */

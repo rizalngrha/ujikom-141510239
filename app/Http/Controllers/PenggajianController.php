@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Tunjangan;
 use App\Penggajian;
 use Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class PenggajianController extends Controller
 {
@@ -15,7 +16,7 @@ class PenggajianController extends Controller
      */
      public function __construct()
     {
-        $this->middleware('Keuangan');
+        $this->middleware('Admin');
     }
     public function index()
     {

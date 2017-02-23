@@ -7,7 +7,7 @@
    {!! Form::model($Golongan,['method' => 'PATCH','route'=>['Golongan.update',$Golongan->id]]) !!}
     <div class="form-group">
         {!! Form::label('Kode Golongan', 'Kode Golongan') !!}
-        {!! Form::text('Kode_Golongan',null,['class'=>'form-control','required']) !!}
+        {!! Form::text('Kode_Golongan',null,['class'=>'form-control','required','readonly']) !!}
     </div>
     <div class="form-group">
         {!! Form::label('Nama Golongan', 'Nama Golongan') !!}

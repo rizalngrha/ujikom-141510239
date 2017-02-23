@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Request;
-use App\Golongan;
-use DB;
-use Validator;
+
 use Input;
+use Illuminate\Http\Request;
+use App\Http\Requests;
+use App\Golongan;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class GolonganController extends Controller
 {
@@ -46,27 +49,17 @@ class GolonganController extends Controller
     public function store(Request $request)
     {
         //
-         $rules = ['Kode_Golongan'=>'required|unique:Golongan',
-                 'Nama_Golongan'=>'required'];
-        $message = ['Kode_Golongan.required' => 'Isi dulu', 
-                    'Kode_Golongan.unique' => 'Harap Gunakan Kode lain, Karena Kode sudah Digunakan',
-                    'Nama_Golongan.required' => 'Isi dulu'];
-        $validator = Validator::make(Input::all(),$rules,$message);
-        
-        if ($validator->fails())
-        {
+        $this -> validate($request, [
+            'Kode_Golongan' => 'required|min:3|unique:Golongan',
+            ]);
 
-            return redirect('/Golongan/create')
-            ->withErrors($validator)
-            ->withInput();
+        $Golongan = new Golongan;
+        $Golongan->Kode_Golongan = $request->get('Kode_Golongan');
+        $Golongan->Nama_Golongan = $request->get('Nama_Golongan');
+        $Golongan->Besaran_Uang = $request->get('Besaran_Uang');
+        $Golongan->save();
 
-        }
-        else
-        {
-            $Golongan = Request::all();
-            Golongan::create($Golongan);
-            return redirect('Golongan');
-        }
+        return redirect('Golongan');
     }
 
     /**

@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Request;
-use App\Jabatan;
-use Validator;
 use Input;
+use Illuminate\Http\Request;
+use App\Http\Requests;
+use App\Jabatan;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
 class JabatanController extends Controller
 {
     /**
@@ -44,27 +48,17 @@ class JabatanController extends Controller
     public function store(Request $request)
     {
         //
-       $rules = ['Kode_Jabatan'=>'required|unique:Jabatan',
-                 'Nama_Jabatan'=>'required'];
-        $message = ['Kode_Jabatan.required' => 'Isi dulu', 
-                    'Kode_Jabatan.unique' => 'Harap Gunakan Kode lain, Karena Kode sudah Digunakan',
-                    'Nama_Jabatan.required' => 'Isi dulu'];
-        $validator = Validator::make(Input::all(),$rules,$message);
-        
-        if ($validator->fails())
-        {
+      $this -> validate($request, [
+            'Kode_Jabatan' => 'required|min:3|unique:Jabatan',
+            ]);
 
-            return redirect('/Jabatan/create')
-            ->withErrors($validator)
-            ->withInput();
+        $jabat = new Jabatan;
+        $jabat->Kode_Jabatan = $request->get('Kode_Jabatan');
+        $jabat->Nama_Jabatan = $request->get('Nama_Jabatan');
+        $jabat->Besaran_Uang = $request->get('Besaran_Uang');
+        $jabat->save();
 
-        }
-        else
-        {
-            $Jabatan = Request::all();
-            Jabatan::create($Jabatan);
-            return redirect('Jabatan');
-        }
+        return redirect('Jabatan');
     }
 
     /**
@@ -87,8 +81,8 @@ class JabatanController extends Controller
     public function edit($id)
     {
         //
-        $Jabatan=Jabatan::find($id);
-        return view('Jabatan.edit',compact('Jabatan'));
+      $Jabatan = Jabatan::find($id);
+        return view('Jabatan.edit', compact('Jabatan'));
   
     }
 
@@ -102,10 +96,17 @@ class JabatanController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $JabatanUpdate=Request::all();
-        $Jabatan=Jabatan::find($id);
-        $Jabatan->update($JabatanUpdate);
-        return redirect('Jabatan'); 
+          $Jabatan = Jabatan::find($id);
+
+        $this -> validate($request, [
+            'Kode_Jabatan' => 'required|min:3',
+            ]);
+        $Jabatan->Kode_Jabatan = $request->get('Kode_Jabatan');
+        $Jabatan->Nama_Jabatan = $request->get('Nama_Jabatan');
+        $Jabatan->Besaran_Uang = $request->get('Besaran_Uang');
+
+        $Jabatan->save();
+        return redirect('Jabatan');
     }
 
     /**

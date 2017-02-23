@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Request;
-use App\Golongan;
-use App\Jabatan;
-use App\Kategori_Lembur;
-use Validator;
 use Input;
+use Illuminate\Http\Request;
+use App\Http\Requests;
+use App\Golongan;
+use App\Kategori_Lembur;
+use App\Jabatan;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class Kategori_LemburController extends Controller
 {
     /**
@@ -50,27 +53,19 @@ class Kategori_LemburController extends Controller
     {
         //
         
-         $rules = ['Kode_Lembur'=>'required|unique:Kategori_Lembur',
-                 'Besaran_Uang'=>'required'];
-        $message = ['Kode_Lembur.required' => 'Isi dulu', 
-                    'Kode_Lembur.unique' => 'Harap Gunakan Kode lain, Karena Kode sudah Digunakan',
-                    'Besaran_Uang.required' => 'Isi dulu'];
-        $validator = Validator::make(Input::all(),$rules,$message);
+        $this -> validate($request, [
+            'Kode_Lembur' => 'required|min:3|unique:Kategori_Lembur',
+            ]);
+
+        $Kategori_Lembur = new Kategori_Lembur;
+        $Kategori_Lembur->Kode_Lembur = $request->get('Kode_Lembur');
+        $Kategori_Lembur->Kode_Jabatan = $request->get('Kode_Jabatan');
+        $Kategori_Lembur->Kode_Golongan = $request->get('Kode_Golongan');
         
-        if ($validator->fails())
-        {
+        $Kategori_Lembur->Besaran_Uang = $request->get('Besaran_Uang');
+        $Kategori_Lembur->save();
 
-            return redirect('/Kategori_Lembur/create')
-            ->withErrors($validator)
-            ->withInput();
-
-        }
-        else
-        {
-            $Kategori_Lembur = Request::all();
-            Kategori_Lembur::create($Kategori_Lembur);
-            return redirect('Kategori_Lembur');
-        }
+        return redirect('Kategori_Lembur');
     }
 
     /**

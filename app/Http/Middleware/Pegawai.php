@@ -14,13 +14,13 @@ class Pegawai
      * @return mixed
      */
     public function handle($request, Closure $next)
-   {
-        if (auth()->check() && $request->user()->permission == 'Admin' ) {
+    {
+        if(auth()->check() && $request->user()->type_user == 'Admin'){
             return $next($request);
         }
-        elseif (auth()->check() && $request->user()->permission == 'Pegawai') {
+        else if(auth()->check() && $request->user()->type_user == 'Pegawai'){
             return $next($request);
         }
-        return redirect()->guest('/login');
+        return redirect()->guest('/');
     }
 }

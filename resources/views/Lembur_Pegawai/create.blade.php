@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
             <div class="panel panel-primary">
-                <div class="panel-heading"><center><font color="black" size="6%">Create Lembur Pegawai</font></div>
+                <div class="panel-heading"><center><h3><font face="Maiandra GD" color="white">Tamabah Data Lembur Pegawai</font></div></h3></center>
 </center>
                 <div class="panel-body">
     {!! Form::open(['url' => 'Lembur_Pegawai']) !!}

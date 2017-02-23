@@ -7,27 +7,30 @@
   {!! Form::model($Kategori_Lembur,['method' => 'PATCH','route'=>['Kategori_Lembur.update',$Kategori_Lembur->id]]) !!}
     <div class="form-group">
         {!! Form::label('Kode Lembur', 'Kode Lembur') !!}
-        {!! Form::text('Kode_Lembur',null,['class'=>'form-control','required']) !!}
+        {!! Form::text('Kode_Lembur',null,['class'=>'form-control','required','readonly']) !!}
     </div>
 
-      <div class="form-group">
-            <select class="form-control" name="jabatan_id">   
-            <option>--Daftar Jabatan--</option>
+    
+     <div class="form-group">
+      {!! Form::label('Jabatan', 'Jabatan') !!}
+            <select class="form-control" name="Kode_Jabatan">   
+            
             @foreach ($Jabatan as $data)
             <option value='{!! $data->id !!}'>{!! $data->Nama_Jabatan !!}</option>
             @endforeach
             </select>
     </div>
 
-       <div class="form-group">
-            <select class="form-control" name="golongan_id">   
-            <option>--Daftar Golongan--</option>
+  <div class="form-group">
+      {!! Form::label('Golongan', 'Golongan') !!}
+      
+            <select class="form-control" name="Kode_Golongan">   
+          
             @foreach ($Golongan as $data)
             <option value='{!! $data->id !!}'>{!! $data->Nama_Golongan !!}</option>
             @endforeach
             </select>
     </div>
-
     <div class="form-group">
         {!! Form::label('Besaran Uang', 'Besaran Uang') !!}
         {!! Form::text('Besaran_Uang',null,['class'=>'form-control','required']) !!}

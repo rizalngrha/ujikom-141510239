@@ -23,7 +23,11 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $hidden = [
+     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function Pegawai(){
+        return $this->hasOne('App\Pegawai', 'user_id');
+    }
 }
