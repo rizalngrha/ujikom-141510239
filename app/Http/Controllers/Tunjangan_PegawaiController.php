@@ -16,10 +16,10 @@ class Tunjangan_PegawaiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    //  public function __construct()
-    // {
-    //     $this->middleware('Keuangan');
-    // }
+     public function __construct()
+    {
+        $this->middleware('Keuangan');
+    }
     public function index()
        {
         //

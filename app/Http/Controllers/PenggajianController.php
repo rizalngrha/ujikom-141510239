@@ -32,10 +32,10 @@ class PenggajianController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    //  public function __construct()
-    // {
-    //     $this->middleware('Keuangan');
-    // }
+     public function __construct()
+    {
+        $this->middleware('Keuangan');
+    }
     public function index()
     {
        $Gaji = Penggajian::paginate(3);
@@ -120,15 +120,15 @@ class PenggajianController extends Controller
             $gaji->Petugas_penerima = Auth::user()->name;
             $gaji->save();
 
-            
-
         }
         else
         {
-            $gaji->Jumlah_jam_lembur = $Lembur_Pegawai->Jumlah_jam_lembur;
-            $gaji->Jumlah_uang_lembur =($Lembur_Pegawai->Jumlah_jam_lembur)*($Kategori_Lembur->Besaran_Uang);
+            $gaji->Jumlah_jam_lembur = $Lembur_Pegawai->Jumlah_Jam;
+            $gaji->Jumlah_uang_lembur =($Lembur_Pegawai->Jumlah_Jam)*($Kategori_Lembur->Besaran_Uang);
             $gaji->Gaji_pokok=$Jabatan->Besaran_Uang+$Golongan->Besaran_Uang;
+           
             $gaji->Total_gaji = ($Lembur_Pegawai->Jumlah_jam*$Kategori_Lembur->Besaran_Uang)+($Tunjangan->Jumlah_Anak*$Tunjangan->Besaran_Uang)+($Jabatan->Besaran_Uang+$Golongan->Besaran_Uang);
+           
             $gaji->Tanggal_pengambilan = date('d-m-y');
             $gaji->Status_pengambilan = Input::get('Status_pengambilan');
             $gaji->Kode_Tunjangan = Input::get('Kode_Tunjangan');

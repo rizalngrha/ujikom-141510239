@@ -14,13 +14,13 @@ class HRD
      * @return mixed
      */
     public function handle($request, Closure $next)
-    
+    {
         if (auth()->check() && $request->user()->permission == 'Admin') {
            return $next ($request);
        }
        elseif (auth()->check() && $request->user()->permission == 'HRD') {
            return $next ($request);
        }
-       return redirect()->guest('/');
+       return redirect()->guest('/404');
     }
 }
