@@ -50,7 +50,7 @@
                                 </select>
                             </div>
                         </div>
-
+<br>
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>
 
@@ -91,7 +91,7 @@
                                 </select>
                             </div>
                         </div>
-
+<br>
                         <div class="form-group{{ $errors->has('Kode_Golongan') ? ' has-error' : '' }}">
                             <label for="Kode_Golongan" class="col-md-4 control-label">Nama Golongan</label>
                             <div class="col-md-6">
@@ -102,10 +102,11 @@
                                 </select>
                             </div>
                         </div>
+                        <br>
                         <div class="form-group{{ $errors->has('Photo') ? ' has-error' : '' }}">
                             <label for="Photo" class="col-md-4 control-label">Photo</label>
                             <div class="col-md-6">
-                            <img  id="showgambar" src="{{asset('image/default.png')}}" width="200" height="200" class="img img-thumbnail">
+                            <img  id="showgambar" src="{{asset('img/default.png')}}" width="200" height="200" class="img img-thumbnail">
                                 <input id="Photo" type="file" class="form-control" name="Photo" value="{{ old('Photo') }}" autofocus>
                             </div>
                         </div>

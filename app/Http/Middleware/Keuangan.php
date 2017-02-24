@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class Pegawai
+class Keuangan
 {
     /**
      * Handle an incoming request.
@@ -15,16 +15,10 @@ class Pegawai
      */
     public function handle($request, Closure $next)
     {
-        if (auth()->check() && $request->user()->permission == 'Admin') {
+       if (auth()->check() && $request->user()->permission == 'Admin') {
            return $next ($request);
        }
        elseif (auth()->check() && $request->user()->permission == 'Keuangan') {
-           return $next ($request);
-       }
-       elseif (auth()->check() && $request->user()->permission == 'HRD') {
-           return $next ($request);
-       }
-       elseif (auth()->check() && $request->user()->permission == 'Pegawai') {
            return $next ($request);
        }
        return redirect()->guest('/');

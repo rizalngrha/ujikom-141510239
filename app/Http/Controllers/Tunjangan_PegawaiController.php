@@ -16,10 +16,10 @@ class Tunjangan_PegawaiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-     public function __construct()
-    {
-        $this->middleware('Admin');
-    }
+    //  public function __construct()
+    // {
+    //     $this->middleware('Keuangan');
+    // }
     public function index()
        {
         //
@@ -53,8 +53,8 @@ class Tunjangan_PegawaiController extends Controller
     public function store(Request $request)
     {
         //
-        $Tunjangan_Pegawai=Request::all();
-        Tunjangan_Pegawai::create($Tunjangan_Pegawai);
+            $Tunjangan_Pegawai=Request::all();
+            Tunjangan_Pegawai::create($Tunjangan_Pegawai);
         return redirect('Tunjangan_Pegawai');
     }
 

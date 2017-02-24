@@ -17,7 +17,8 @@
 					<th><center>Golongan</center></th>
 					<th><center>Status</center></th>
 					<th><center>Jumlah&nbsp;Anak</center></th>
-					
+					<th><center>Besaran&nbsp;Uang</center></th>
+                    
 					<th colspan="2"><center>Pilihan</center></th>
 
                 </tr>
@@ -35,7 +36,7 @@
 						<td><center>{{ $data->Golongan->Nama_Golongan }}</center></td>
 						<td><center>{{ $data->Status}}</center></td>
 						<td><center>{{ $data->Jumlah_Anak }}</center></td>
-					
+					<th><center><?php echo 'Rp.'. number_format($data->Besaran_Uang, 2,",","."); ?></center></th>
 						
                                 <td><center>
                             <a href="{{ route('Tunjangan.edit', $data->id) }}"  button class="btn btn-primary" type="submit"><i class="fa fa-pencil-square-o"></i></a></center>

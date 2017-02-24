@@ -12,9 +12,8 @@
                 <tr>
                    <th><center>No</center></th>
 					<th><center>Kode Tunjangan</center></th>
-					<th><center>Nama&nbsp;Pegawai</center></th>
-					<th><center>Jabatan</center></th>
-					<th><center>Golongan</center></th>
+					<th><center>NIP</center></th>
+					<th><center>Nama Pegawai</center></th>
 					<th><center>Besaran Uang</center></th>
 					
 					<th colspan="3"><center>Pilihan </center></th>
@@ -29,13 +28,10 @@
                
                 <tr>
 						<td><center>{{ $no++ }}</center></td>
-						<td><center>{{ $data->Tunjangan->Kode_Tunjangan }}</center></td>
-						<td><center>{{ $data->Pegawai->User->name }}</center></td>
-						<td><center>{{ $data->Pegawai->Jabatan->Nama_Jabatan }}</center></td>
-						<td><center>{{ $data->Pegawai->Golongan->Nama_Golongan }}</center></td>
-			
-						<td><center><?php echo 'Rp'. number_format($data->Tunjangan->Besaran_Uang, 2,",","."); ?>
-             </center></td>
+						<th><center>{{ $data->Tunjangan->Kode_Tunjangan }}</center></th>
+                                 <th><center>{{ $data->Pegawai->Nip }}</center></th>
+                                 <th><center>{{ $data->Pegawai->User->name }}</center></th>
+                                 <th><center><?php echo 'Rp.'. number_format($data->Tunjangan->Besaran_Uang, 2,",","."); ?></center></th>
 						
            
                                 <td><center>

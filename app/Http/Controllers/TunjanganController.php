@@ -11,6 +11,9 @@ use App\Golongan;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
+
+
 class TunjanganController extends Controller
 {
     /**
@@ -18,10 +21,10 @@ class TunjanganController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-     public function __construct()
-    {
-        $this->middleware('Admin');
-    }
+    //  public function __construct()
+    // {
+    //     $this->middleware('Keuangan');
+    // }
     public function index()
     {
         //
@@ -107,10 +110,21 @@ class TunjanganController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $TunjanganUpdate=Request::all();
-        $Tunjangan=Tunjangan::find($id);
-        $Tunjangan->update($TunjanganUpdate);
+        $Tunjangan = Tunjangan::find($id);
+
+        $this -> validate($request, [
+            'Kode_Tunjangan' => 'required|min:3',
+            ]);
+        $Tunjangan->Kode_Tunjangan = $request->get('Kode_Tunjangan');
+        $Tunjangan->Kode_Jabatan = $request->get('Kode_Jabatan');
+        $Tunjangan->Kode_Golongan = $request->get('Kode_Golongan');
+        $Tunjangan->Status = $request->get('Status');
+        $Tunjangan->Jumlah_Anak = $request->get('Jumlah_Anak');
+        $Tunjangan->Besaran_Uang = $request->get('Besaran_Uang');
+        $Tunjangan->save();
+
         return redirect('Tunjangan');
+
     }
 
     /**

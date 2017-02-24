@@ -8,6 +8,7 @@ use App\Golongan;
 use App\User;
 use App\Pegawai;
 use DB;
+use File;
 use Validator;
 use Input;
 use App\Http\Controllers\Controller;
@@ -21,10 +22,10 @@ class PegawaiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-     public function __construct()
-    {
-        $this->middleware('Admin');
-    }
+    //  public function __construct()
+    // {
+    //     $this->middleware('HRD');
+    // }
     public function index()
     {
         //

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Input;
-use Illuminate\Http\Request;
-use App\Http\Requests;
+use Illuminate\http\Request;
+
 use App\Golongan;
 use App\Kategori_Lembur;
 use App\Jabatan;
@@ -17,11 +17,11 @@ class Kategori_LemburController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */
-     public function __construct()
-    {
-        $this->middleware('Admin');
-    }
+    //  */
+    //  public function __construct()
+    // {
+    //     $this->middleware('Admin');
+    // }
     public function index()
     {
         //

@@ -57,6 +57,8 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'Admin' => \App\Http\Middleware\Admin::class,
+        'Keuangan' => \App\Http\Middleware\Keuangan::class,
+        'HRD' => \App\Http\Middleware\HRD::class,
         'Pegawai' => \App\Http\Middleware\Pegawai::class,
         'jwt-auth' => \App\Http\Middleware\authJWT::class,  
     ];

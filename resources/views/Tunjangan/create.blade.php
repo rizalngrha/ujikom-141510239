@@ -6,7 +6,7 @@
                 <div class="panel-body">
     {!! Form::open(['url' => 'Tunjangan']) !!}
    <div class="form-group{{ $errors->has('Kode_Tunjangan') ? ' has-error' : '' }}">
-                            {!! Form::label('Kode', 'Kode Jabatan:') !!}
+                            {!! Form::label('Kode', 'Kode Tunjangan:') !!}
                             <input type="text" name="Kode_Tunjangan" class="form-control" required>
 
                             @if ($errors->has('Kode_Tunjangan'))
@@ -39,12 +39,18 @@
     </div>
 <br>
     <div class="form-group">
- 
-        {!! Form::label('Status', 'Status') !!} &nbsp;<br>
-        <form method="post" action="#">
-        <input type="radio" name="Status" value="Menikah"/>  Menikah &nbsp;&nbsp;
-        <input type="radio" name="Status" value="Belum Menikah"/>  Belum Menikah
-    </div>
+        
+              {!! Form::label('Status ', 'Status ') !!}
+           
+         
+             <select class="form-control" name="Status" id="Status" required>
+                <option value="Belum Nikah">Belum Nikah</option>
+                <option value="Nikah">Nikah</option>
+                <option value="Janda">Janda</option>
+                <option value="Duda">Duda</option>
+            </select>
+       
+      </div>
     <br>
 
     <div class="form-group">

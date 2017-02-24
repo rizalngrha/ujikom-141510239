@@ -25,7 +25,7 @@
                             @php
                             $no = 1;
                             @endphp
-                            @foreach($Penggajian as $data)
+                            @foreach($Gaji as $data)
                             <tbody>
                                 <tr>
                                 
@@ -33,10 +33,14 @@
                                     <td>{{$data->Tunjangan_Pegawai->Pegawai->User->name}}</td>
                                     <td>{{$data->Jumlah_jam_lembur}} </td>
                                     <td>{{$data->Jumlah_uang_lembur}} </td>
-                                    <td>{{$data->Gaji_pokok}} </td>
-                                    <td>{{$data->Total_gaji}} </td>
+                                    <td><?php echo 'Rp.'. number_format($data->Gaji_pokok, 2,",","."); ?> </td>
+                                    <td><?php echo 'Rp.'. number_format($data->Total_gaji, 2,",","."); ?></td>
+                                  
+
                                     <td>{{$data->updated_at}} </td>
                                     
+
+                                   
                                     @if($data->Status_pengambilan == 0)
                                     
                                         <td>Belum Diambil </td>
@@ -48,12 +52,17 @@
                                     
                                     @endif
                                   <td>{{$data->Petugas_penerima}} </td>
-                    <td><a href="{{route('Penggajian.edit',$data->id)}}" class="btn btn-warning">Update</a></td>
-             <td>
-             {!! Form::open(['method' => 'DELETE', 'route'=>['Penggajian.destroy', $data->id]]) !!}
-             {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-             {!! Form::close() !!}
-             </td>
+                    <td><center>
+                            <a href="{{ route('Penggajian.edit', $data->id) }}"  button class="btn btn-primary" type="submit"><i class="fa fa-pencil-square-o"></i></a></center>
+                             <?php $id=$data->id;?>
+                             {!! Form::open(['method' => 'DELETE', 'route'=>['Penggajian.destroy', $id]]) !!}
+                                    
+                                 </td>
+                                 <td>
+                                 <center>
+                                    <button class="btn btn-danger" type="submit"><i class="fa fa-trash"></i></button></center>
+                                    {!! Form::close() !!}
+                                </td>
                     </tr>
                 @endforeach
           

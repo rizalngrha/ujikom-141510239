@@ -12,14 +12,10 @@
                 <tr>
                     <th><center>No</center></th>
                     <th><center>Kode Lembur</center></th>
-                    <th><center>Jabatan</center></th>
-                    <th><center>Golongan</center></th>
+                    <th><center>NIP</center></th>
                     <th><center>Nama Pegawai</center></th>
                     <th><center>Jumlah Jam</center></th>
                     <th><center>Besaran Uang</center></th>
-                    
-                    <th colspan="2"><center>Selection</center></th>
-
                 </tr>
             </thead>
             @php
@@ -30,12 +26,11 @@
                 <tr>
                     <td><center>{{ $no++ }}</center></td>
                     <td><center>{{ $data->Kategori_Lembur->Kode_Lembur}}</center></td>
-                    <td><center>{{ $data->Kategori_Lembur->Jabatan->Nama_Jabatan}}</center></td>
-                    <td><center>{{ $data->Kategori_Lembur->Golongan->Nama_Golongan}}</center></td>
-                    
+                     <th><center>{{ $data->Pegawai->Nip}}</center></th>
                     <td><center>{{ $data->Pegawai->User->name}}</center></td>
+                  
                     <td><center>{{ $data->Jumlah_Jam}}</center></td>
-                    <td><center><?php echo 'Rp'. number_format($data->Kategori_Lembur->Besaran_Uang, 2,",","."); ?></center>
+                     <th><center><?php echo 'Rp.'. number_format($data->Kategori_lembur->Besaran_Uang*$data->Jumlah_Jam, 2,",","."); ?></center></th>
              </td>
                    
            
