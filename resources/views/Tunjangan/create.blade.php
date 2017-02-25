@@ -46,8 +46,7 @@
              <select class="form-control" name="Status" id="Status" required>
                 <option value="Belum Nikah">Belum Nikah</option>
                 <option value="Nikah">Nikah</option>
-                <option value="Janda">Janda</option>
-                <option value="Duda">Duda</option>
+
             </select>
        
       </div>

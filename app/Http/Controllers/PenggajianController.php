@@ -91,7 +91,7 @@ class PenggajianController extends Controller
        if (isset($WPenggajian)) {
            $error=true ;
            $Tunjangan=Tunjangan_Pegawai::paginate(10);
-           dd($WPenggajian);
+           // dd($WPenggajian);
            return view('Penggajian.create',compact('Tunjangan','error'));
        }
        elseif (!isset($Lembur_Pegawai)) {
