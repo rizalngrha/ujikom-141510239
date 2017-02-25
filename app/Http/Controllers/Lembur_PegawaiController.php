@@ -6,7 +6,6 @@ use Request;
 use App\Lembur_Pegawai;
 use App\Kategori_Lembur;
 use App\Pegawai;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Lembur_PegawaiController extends Controller
 {

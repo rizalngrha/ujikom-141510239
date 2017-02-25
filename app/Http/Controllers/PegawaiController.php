@@ -13,7 +13,6 @@ use Validator;
 use Input;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class PegawaiController extends Controller
 {
         use RegistersUsers;

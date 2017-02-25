@@ -18,7 +18,7 @@ class Admin
         if (auth()->check() && $request->user()->permission == 'Admin') {
             return $next($request);
         }
-        return redirect()->guest('/404');
+        return redirect()->guest('/');
     }
 }
 

@@ -9,8 +9,6 @@ use App\Http\Requests;
 use App\Golongan;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-
 class GolonganController extends Controller
 {
     /**

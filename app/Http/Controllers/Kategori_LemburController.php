@@ -10,7 +10,6 @@ use App\Kategori_Lembur;
 use App\Jabatan;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class Kategori_LemburController extends Controller
 {
     /**

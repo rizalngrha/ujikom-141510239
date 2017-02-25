@@ -8,7 +8,6 @@ use App\Pegawai;
 use App\Tunjangan;
 use App\Jabatan;
 use App\Golongan;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class Tunjangan_PegawaiController extends Controller
 {
     /**

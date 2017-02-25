@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.6.4
+-- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Feb 10, 2017 at 10:15 AM
--- Server version: 10.1.16-MariaDB
--- PHP Version: 7.0.9
+-- Host: localhost:3306
+-- Generation Time: Feb 25, 2017 at 02:06 AM
+-- Server version: 10.1.19-MariaDB
+-- PHP Version: 7.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `golongan` (
   `id` int(10) UNSIGNED NOT NULL,
-  `Kode_Golongan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Kode_Golongan` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Nama_Golongan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Besaran_Uang` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -40,7 +40,8 @@ CREATE TABLE `golongan` (
 --
 
 INSERT INTO `golongan` (`id`, `Kode_Golongan`, `Nama_Golongan`, `Besaran_Uang`, `created_at`, `updated_at`) VALUES
-(1, 'KG-02', 'junior', 40000, '2017-02-10 01:11:34', '2017-02-10 01:11:34');
+(1, 'KG-01', 'Golongan1', 2000000, '2017-02-24 04:48:56', '2017-02-24 04:48:56'),
+(2, 'KG-02', 'Golongan2', 1000000, '2017-02-24 04:49:10', '2017-02-24 04:49:10');
 
 -- --------------------------------------------------------
 
@@ -50,7 +51,7 @@ INSERT INTO `golongan` (`id`, `Kode_Golongan`, `Nama_Golongan`, `Besaran_Uang`, 
 
 CREATE TABLE `jabatan` (
   `id` int(10) UNSIGNED NOT NULL,
-  `Kode_Jabatan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Kode_Jabatan` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Nama_Jabatan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Besaran_Uang` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -62,7 +63,8 @@ CREATE TABLE `jabatan` (
 --
 
 INSERT INTO `jabatan` (`id`, `Kode_Jabatan`, `Nama_Jabatan`, `Besaran_Uang`, `created_at`, `updated_at`) VALUES
-(1, 'KJ/02', 'Manajer', 400000, '2017-02-10 01:11:24', '2017-02-10 01:11:24');
+(1, 'KJ-01', 'Manager', 4000000, '2017-02-24 04:47:45', '2017-02-24 04:47:45'),
+(2, 'KJ-02', 'Sekretaris', 5000000, '2017-02-24 04:48:12', '2017-02-24 04:48:12');
 
 -- --------------------------------------------------------
 
@@ -72,13 +74,23 @@ INSERT INTO `jabatan` (`id`, `Kode_Jabatan`, `Nama_Jabatan`, `Besaran_Uang`, `cr
 
 CREATE TABLE `kategori_lembur` (
   `id` int(10) UNSIGNED NOT NULL,
-  `Kode_Lembur` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Kode_Lembur` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Kode_Jabatan` int(10) UNSIGNED NOT NULL,
   `Kode_Golongan` int(10) UNSIGNED NOT NULL,
   `Besaran_Uang` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `kategori_lembur`
+--
+
+INSERT INTO `kategori_lembur` (`id`, `Kode_Lembur`, `Kode_Jabatan`, `Kode_Golongan`, `Besaran_Uang`, `created_at`, `updated_at`) VALUES
+(1, 'KL-01', 1, 1, 50000, '2017-02-24 04:49:47', '2017-02-24 04:49:47'),
+(2, 'KL-02', 1, 2, 25000, '2017-02-24 04:50:08', '2017-02-24 04:50:08'),
+(5, 'KL-03', 2, 1, 30000, '2017-02-24 04:51:49', '2017-02-24 04:51:49'),
+(7, 'KL-04', 2, 2, 15000, '2017-02-24 04:52:41', '2017-02-24 04:52:41');
 
 -- --------------------------------------------------------
 
@@ -94,6 +106,13 @@ CREATE TABLE `lembur_pegawai` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `lembur_pegawai`
+--
+
+INSERT INTO `lembur_pegawai` (`id`, `Kode_Lembur`, `Kode_Pegawai`, `Jumlah_Jam`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 5, '2017-02-24 05:12:57', '2017-02-24 05:12:57');
 
 -- --------------------------------------------------------
 
@@ -143,14 +162,24 @@ CREATE TABLE `password_resets` (
 
 CREATE TABLE `pegawai` (
   `id` int(10) UNSIGNED NOT NULL,
-  `Nip` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Nip` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
   `Kode_Jabatan` int(10) UNSIGNED NOT NULL,
   `Kode_Golongan` int(10) UNSIGNED NOT NULL,
-  `Photo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Photo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `pegawai`
+--
+
+INSERT INTO `pegawai` (`id`, `Nip`, `user_id`, `Kode_Jabatan`, `Kode_Golongan`, `Photo`, `created_at`, `updated_at`) VALUES
+(1, '10101010101', 1, 1, 1, 'lwAAms_Foto5.png', '2017-02-24 04:54:02', '2017-02-24 04:54:02'),
+(2, '10101010102', 2, 1, 2, 'YCGhaS_Foto7.png', '2017-02-24 04:55:16', '2017-02-24 04:55:16'),
+(3, '10101010103', 3, 2, 1, 'Owa236_lala.png', '2017-02-24 05:07:28', '2017-02-24 05:07:28'),
+(4, '10101010104', 4, 2, 2, '2f3kmr_Foto9.png', '2017-02-24 05:08:07', '2017-02-24 05:08:07');
 
 -- --------------------------------------------------------
 
@@ -172,6 +201,13 @@ CREATE TABLE `penggajian` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `penggajian`
+--
+
+INSERT INTO `penggajian` (`id`, `Kode_Tunjangan`, `Jumlah_jam_lembur`, `Jumlah_uang_lembur`, `Gaji_pokok`, `Total_gaji`, `Tanggal_pengambilan`, `Status_pengambilan`, `Petugas_penerima`, `created_at`, `updated_at`) VALUES
+(2, 1, 5, 250000, 6000000, 7000000, '2024-02-17', 1, 'Admin', '2017-02-24 05:13:13', '2017-02-24 05:13:13');
+
 -- --------------------------------------------------------
 
 --
@@ -180,7 +216,7 @@ CREATE TABLE `penggajian` (
 
 CREATE TABLE `tunjangan` (
   `id` int(10) UNSIGNED NOT NULL,
-  `Kode_Tunjangan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Kode_Tunjangan` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Kode_Jabatan` int(10) UNSIGNED NOT NULL,
   `Kode_Golongan` int(10) UNSIGNED NOT NULL,
   `Status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -195,8 +231,9 @@ CREATE TABLE `tunjangan` (
 --
 
 INSERT INTO `tunjangan` (`id`, `Kode_Tunjangan`, `Kode_Jabatan`, `Kode_Golongan`, `Status`, `Jumlah_Anak`, `Besaran_Uang`, `created_at`, `updated_at`) VALUES
-(1, '1', 1, 1, 'Menikah', 2, 9000000, NULL, NULL),
-(2, '1', 1, 1, 'Menikah', 2, 9000000, NULL, NULL);
+(1, 'KT-01', 1, 1, 'Nikah', 1, 1000000, '2017-02-24 04:55:44', '2017-02-24 04:55:44'),
+(2, 'KT-02', 1, 1, 'Nikah', 2, 1500000, '2017-02-24 04:56:07', '2017-02-24 04:56:20'),
+(3, 'KT-03', 1, 2, 'Nikah', 2, 2000000, '2017-02-24 04:57:28', '2017-02-24 04:57:28');
 
 -- --------------------------------------------------------
 
@@ -211,6 +248,14 @@ CREATE TABLE `tunjangan_pegawai` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tunjangan_pegawai`
+--
+
+INSERT INTO `tunjangan_pegawai` (`id`, `Kode_Tunjangan`, `Kode_Pegawai`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, '2017-02-24 04:58:26', '2017-02-24 04:58:26'),
+(2, 2, 2, '2017-02-24 05:01:51', '2017-02-24 05:01:51');
 
 -- --------------------------------------------------------
 
@@ -230,6 +275,16 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `permission`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', 'Admin@example.com', '$2y$10$Q3zlPauZJ488Jfz70ilpIOjvMT8tiJN/BHiWjzVOKdcIrbjxDBkke', 'Admin', 'uTYlMYi4SqMjCg3pQgOYqQZTstbYPkT2wm9iBlK4YytcuGjMAuKC7X0mWjWD', '2017-02-24 04:54:02', '2017-02-24 04:54:02'),
+(2, 'Pegawai', 'Pegawai@example.com', '$2y$10$6rjutB4GULmSHLZlldC6LOxCG9I.RJ9ZCwDp5mb7.vYpPgw2mFtR2', 'Pegawai', 'haH1q6ctlqpbK4ZtEN10EsN7DwIygc5zqkLtNp0SJ3xbjQw5tCxceLhwSwGA', '2017-02-24 04:55:16', '2017-02-24 04:55:16'),
+(3, 'HRD', 'HRD@example.com', '$2y$10$LMcgYDCsOn7r7K5kSAlLlOSIAGh6/YqT0RYL0VsmMo6Kaf6YXph82', 'HRD', '1PW6F1kWQo31HTt2nloeEfmNO4dGw7rskxlPDiWKRmxwYCQpSa4HxVMOxuI7', '2017-02-24 05:07:28', '2017-02-24 05:07:28'),
+(4, 'Keuangan', 'Keuangan@example.com', '$2y$10$rJX1AougrxeQQspwly5uaujg6SVBDUKctz..OpW/SKxnbreURk9aO', 'Keuangan', 'eRpBIyi0kawjmerfJLVKLbOILynrYEqxsx2QqrXrORNCfXJblxeaNkS3JH6n', '2017-02-24 05:08:07', '2017-02-24 05:08:07');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -237,19 +292,22 @@ CREATE TABLE `users` (
 -- Indexes for table `golongan`
 --
 ALTER TABLE `golongan`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `golongan_kode_golongan_unique` (`Kode_Golongan`);
 
 --
 -- Indexes for table `jabatan`
 --
 ALTER TABLE `jabatan`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `jabatan_kode_jabatan_unique` (`Kode_Jabatan`);
 
 --
 -- Indexes for table `kategori_lembur`
 --
 ALTER TABLE `kategori_lembur`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `kategori_lembur_kode_lembur_unique` (`Kode_Lembur`),
   ADD KEY `kategori_lembur_kode_jabatan_foreign` (`Kode_Jabatan`),
   ADD KEY `kategori_lembur_kode_golongan_foreign` (`Kode_Golongan`);
 
@@ -279,6 +337,7 @@ ALTER TABLE `password_resets`
 --
 ALTER TABLE `pegawai`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `pegawai_nip_unique` (`Nip`),
   ADD KEY `pegawai_user_id_foreign` (`user_id`),
   ADD KEY `pegawai_kode_jabatan_foreign` (`Kode_Jabatan`),
   ADD KEY `pegawai_kode_golongan_foreign` (`Kode_Golongan`);
@@ -295,6 +354,7 @@ ALTER TABLE `penggajian`
 --
 ALTER TABLE `tunjangan`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `tunjangan_kode_tunjangan_unique` (`Kode_Tunjangan`),
   ADD KEY `tunjangan_kode_jabatan_foreign` (`Kode_Jabatan`),
   ADD KEY `tunjangan_kode_golongan_foreign` (`Kode_Golongan`);
 
@@ -321,22 +381,22 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `golongan`
 --
 ALTER TABLE `golongan`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `jabatan`
 --
 ALTER TABLE `jabatan`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `kategori_lembur`
 --
 ALTER TABLE `kategori_lembur`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `lembur_pegawai`
 --
 ALTER TABLE `lembur_pegawai`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `migrations`
 --
@@ -346,27 +406,27 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `pegawai`
 --
 ALTER TABLE `pegawai`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `penggajian`
 --
 ALTER TABLE `penggajian`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tunjangan`
 --
 ALTER TABLE `tunjangan`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `tunjangan_pegawai`
 --
 ALTER TABLE `tunjangan_pegawai`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Constraints for dumped tables
 --

@@ -10,8 +10,6 @@ use App\Tunjangan;
 use App\Golongan;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-
 
 
 class TunjanganController extends Controller
